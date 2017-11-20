@@ -5,16 +5,13 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <script src="//im2beta-assets.kf5.com/supportbox/main.js?48" id="kf5-provide-supportBox" kf5-domain="im2beta.kf5.com" charset="utf-8"></script> -->
+    <script src="//im2beta-assets.kf5.com/supportbox/main.js?48" id="kf5-provide-supportBox" kf5-domain="im2beta.kf5.com" charset="utf-8"></script>
     <!-- Start of KF5 supportbox script -->
-    <script type="text/javascript">
-        document.write('<script src="\/\/im2beta-assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="im2beta.kf5.com" charset="utf-8"><\/script>');
-    </script>
     <!-- End of KF5 supportbox script -->
-    <!-- <script>
+    <script>
         // 初始化网页客服组件
         // 组件默认会在 onload 事件后自动初始化
-        window.KF5SupportBoxAPI.init();
+        // window.KF5SupportBoxAPI.init();
         window.KF5SupportBoxAPI.ready(function()
         {
             window.KF5SupportBoxAPI.identify({
@@ -28,15 +25,18 @@
                             { name : 'XXX', value : 'XXX' }
                     ]
             });
-            // window.KF5SupportBoxAPI.setAgents([23491934], true);
-            // window.KF5SupportBoxAPI.setAIStore([1005550]);
-            // window.KF5SupportBoxAPI.setKnowledgeStore([12332311]);
+            window.KF5SupportBoxAPI.setAgents([23491934], true);
+            window.KF5SupportBoxAPI.setAIStore([1005550]);
+            window.KF5SupportBoxAPI.setKnowledgeStore([12332311]);
             window.KF5SupportBoxAPI.setParams({
-    "agent_ids": [13129962],
-    "forum_ids": [1005549],
-    "category_ids": [123]
-});
+                "agent_ids": [13129962, 13129963, 13129964],
+                "forum_ids": [1005549, 1005550],
+                "category_ids": [123, 345, 567]
+            });
+
+             window.KF5SupportBoxAPI.init();
+            // window.KF5SupportBoxAPI.removeButton();
         });
-    </script> -->
+    </script>
 </body>
 </html>
