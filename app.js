@@ -15,10 +15,10 @@ app.set('view engine','ejs');
 app.set('views', __dirname + '/views');
 
 app.get('/test', function (req, res, next) {
-  res.render('index');
+  res.render('test');
   next();
 });
-app.use(express.static(path.join(__dirname, '../assets.kf5'), {
+app.use(express.static(path.join(__dirname, './public'), {
 
     setHeaders: function(res, path, stat) {
         // 字体文件跨域
@@ -47,9 +47,9 @@ httpServer.listen(5000, function(req, res){
   console.log('HTTP Static files server start [ OK ]');
 });
 
-httpsServer.listen(443, function(){
-  console.log('HTTPS Static files server start [ OK ]');
-});
+// httpsServer.listen(445, function(){
+//   console.log('HTTPS Static files server start [ OK ]');
+// });
 
 
 module.exports = app;

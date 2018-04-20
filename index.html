@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <a onclick="carDisplay">跳转车展</a>
+
+  <script>
+    window.carDisplay = function(){
+      var url = 'http://i.snssdk.com/subject2/6488605141258732046/';
+      var sslocal = `snssdk36://webview?url=${encodeURIComponent(url)}`;
+      location.href = sslocal;
+    }
+  </script>
+</body>
+</html>

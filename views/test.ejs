@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>schame 跳转测试</title>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+<link href="http://s2.pstatp.com/motor/fe/mis/dealer/index.9fc8d99c.css" rel="stylesheet"></head>
+<style type="text/css">
+	
+	a{
+		display: block;
+		height: 50px;
+		width: 100%;
+	}
+</style>
+<body>
+  <div id="root">
+  	<a  onclick="linkToUgc_post()">跳转文章</a>
+  	<br/>
+  	<a href="javascript:void(0)" onclick="lintToGraphic_post()">跳转graphic_post</a>
+  	<a href="javascript:void(0)" onclick="lintTolightspot()">跳转亮点小视频</a>
+	<br/>
+  	<a href="javascript:void(0)" onclick="linkTo()">跳转二手车</a>
+  	<br/>
+  	<a href="javascript:void(0)" onclick="linkTolist()">跳转challenge_list</a>
+  	<br/>
+		<a href="javascript:void(0)" onclick="linkToApply()">linkToApply</a>
+		
+		<a href="javascript:void(0)" onclick="linkToCollect()">linkToCollect</a>
+		<a href="javascript:void(0)" onclick="linkToCollect2()">linkToCollect 正式</a>
+		<a href="javascript:void(0)" onclick="linkToUploadImage()">跳转到上传图片</a>
+		
+		<a href="javascript:void(0)" onclick="do_command_array()">选择+拆切+普通上传</a>
+		<a href="javascript:void(0)" onclick="do_command_array1()">选择+裁切</a>
+		<a href="javascript:void(0)" onclick="do_command_array2()">选择之后再调裁切再调上传</a>
+		<a href="javascript:void(0)" onclick="do_command_array3()">选择+拆切+高私密</a>
+		<a href="javascript:void(0)" onclick="do_command_array4()">选择多张图片+高私密+上传</a>
+		<a href="javascript:void(0)" onclick="do_command_array5()">选择多张图片+普通上传</a>
+		
+  </div>
+ </body>
+
+ <script src="/toutiao.js"></script>
+ <script type="text/javascript">
+window.toast = function(text,type){
+  var text = text;
+  var icon = type?'icon_success':'icon_failure';
+  try {
+    ToutiaoJSBridge.call('toast', {
+        'text' : text,
+        'icon_type' : icon
+    }, null)
+  }catch(e) {
+    alert('服务器繁忙，请稍后再试')
+  }
+}
+
+window.setUploadGID = function(res){
+	confirm(res);
+}
+
+window.checkUgcUploading = function(cb){
+	try {
+		var ua = navigator.userAgent;
+		var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+	    var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+	    if(ipad || iphone){
+	    	window.ToutiaoJSBridge.call("checkUgcUploading", {}, function(res){
+	    		alert(JSON.stringify(res));
+	        	if(!res.isUploading){
+	        		cb();
+	        	}else{
+	        		confirm("正在上传");
+	        	}
+	        });
+	    }else{
+	    	cb();
+	    }
+        
+    } catch(e) {
+    	alert(e);
+    }
+}
+
+window.lintTolightspot = function(){
+	var url = 'http://10.1.8.182:9095/lightspot.html?car_id=768#/';
+  var sslocal = `snssdk36://webview?url=${encodeURIComponent(url)}`;
+  location.href = sslocal;
+}
+
+window.lintToGraphic_post = function(){
+	checkUgcUploading(function(){
+		location.href="snssdk36://graphic_post?act_id=46&name=豪车诱惑&enter_from=h5_operation_page";
+	});
+}
+
+window.linkToUgc_post = function(){
+	var url= "http://i.snssdk.com/subject2/6488605141258732046/";
+	var sslocal = `snssdk36://car_auth_center`;
+  location.href = sslocal;
+}
+
+
+window.linkToApply = function(){
+  var url = 'http://10.1.8.182:1998/apply';
+  var sslocal = `snssdk36://webview?url=${encodeURIComponent(url)}`;
+  location.href = sslocal;
+}
+
+window.linkTo = function (argument) {
+	
+  var url = 'http://10.1.15.52:9092/motor/m/proxy_page.html?target=https://bl.cx580.com/content/index.html#/nhome?v=023';
+  // var url = 'https://bl.cx580.com/illegal?token=XsPZyyw%2bEqbB7SEYNfSrJdm5tgpfIGGuXQj8MsgoiSk%3d&user_from=sograndwap&user_id=6994298';
+	var sslocal = `snssdk36://webview?url=${encodeURIComponent(url)}&title=赏金任务`;
+	// sslocal://webview?url=https%3A%2F%2Fis.snssdk.com%2Fmotor%2Finapp%2Fcollectactivity%2Fhome.html&title=赏金任务&enable_resume_pause_js=1
+  location.href = url;
+}
+
+window.linkTolist = function  (argument) {
+	// body...
+  var url = 'http://127.0.0.1:8090/motor/growthactivity/halfPrice/index.html?data_from=m_station&zt=tt_hd_dbxq&user_id=123&device_id=2334';
+  var sslocal = `snssdk36://webview?url=${encodeURIComponent(url)}`;
+  location.href = sslocal;
+} 
+
+window.linkToCollect = function(){
+	
+	// var url = 'http://10.1.8.182:9090/home.html';
+	var url = 'http://my.snssdk.com/home.html?user_id=86198908436';
+  var sslocal = `snssdk36://webview?url=${encodeURIComponent(url)}&enable_resume_pause_js=1&title=赏金任务`;
+  location.href = sslocal;
+}
+
+window.linkToCollect2 = function(){
+  var sslocal = `snssdk36://webview?url=http%3A%2F%2Fis.snssdk.com%2Fmotor%2Finapp%2Fcollectactivity%2Fhome.html&title=赏金任务1&enable_resume_pause_js=1`;
+  location.href = sslocal;
+}
+
+window.do_command_array = function(){
+	var command_array = [
+			{
+					"command_type": "choose_img",
+					"select_count": 1
+			},
+			{
+					"command_type": "edit_img",
+					"localPath": "",
+					"width": 375,
+					"height": 247.2
+			},
+			{
+					"command_type": "upload_img",
+					"upload_type": 1,    
+					"localPath_list": [] 
+			}
+	];
+	window.ToutiaoJSBridge.call('do_command_array',{ command_array },function (res){
+		alert(1);
+	});
+}
+
+window.do_command_array1 = function(){
+	var command_array = [
+			{
+					"command_type": "choose_img",
+					"select_count": 1
+			},
+			{
+					"command_type": "edit_img",
+					"localPath": "",
+					"width": 375,
+					"height": 247.2
+			}
+	];
+	window.ToutiaoJSBridge.call('do_command_array',{ command_array },function (res){
+		confirm(JSON.stringify(res));
+	});
+}
+
+window.do_command_array2 = function(){
+	var ua = navigator.userAgent;
+	var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+	var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+	if(ipad || iphone){
+		window.ToutiaoJSBridge.call('choose_img', {"select_count": 1});
+		window.setUploadImage = function(res){
+			res = JSON.parse(decodeURIComponent(res));
+			if(res.errorCode) return;
+			window.ToutiaoJSBridge.call('edit_img',{ 
+				"localPath": res.result,
+				"width": 375,
+				"height": 247.2
+			}, {});
+			window.setUploadImage = function(res){
+				res = JSON.parse(decodeURIComponent(res));
+				if(res.errorCode) return;
+				var params = { 
+						"upload_type": 1,    
+						"localPath_list": res.result
+				};
+				window.ToutiaoJSBridge.call('upload_img', params , {});
+				window.setUploadImage = function(res){
+					alert(decodeURIComponent(res));
+					res = JSON.parse(decodeURIComponent(res));
+					window.toast(res, true);
+					if(res.errorCode) return;
+				}
+			}
+		}
+	}else{
+		window.ToutiaoJSBridge.call('choose_img',{ "select_count": 1 },function (res){
+			var result = JSON.parse(res.result);
+			window.ToutiaoJSBridge.call('edit_img',{ 
+				"localPath": result.local_path_list[0],
+				"width": 375,
+				"height": 247.2
+			},function (res1){
+				var result = JSON.parse(res1.result);
+				var params = { 
+					"upload_type": 1,    
+					"localPath_list": [result.localPath]
+				};
+				window.ToutiaoJSBridge.call('upload_img', params ,function (res){
+					confirm(JSON.stringify(res));
+				});
+			});
+		});
+}
+}
+
+window.do_command_array3 = function(){
+	var command_array = [
+			{
+					"command_type": "choose_img",
+					"select_count": 1
+			},
+			{
+					"command_type": "edit_img",
+					"localPath": "",
+					"width": 375,
+					"height": 247.2
+			},
+			{
+					"command_type": "upload_img",
+					"upload_type": 0,    
+					"localPath_list": [] 
+			}
+	];
+	window.ToutiaoJSBridge.call('do_command_array',{ command_array },function (res){
+		alert(1);
+		confirm(res);
+	});
+}
+ 
+ window.do_command_array4 = function(){
+	var command_array = [
+			{
+					"command_type": "choose_img",
+					"select_count": 5
+			},
+			{
+					"command_type": "upload_img",
+					"upload_type": 3,    
+					"localPath_list": [] 
+			}
+	];
+	window.ToutiaoJSBridge.call('do_command_array',{ command_array },function (res){
+		alert(res);
+		
+		// confirm(JSON.stringify(res));
+	});
+ }
+
+
+window.setUploadImage = function(res){
+	/*
+	 * setType = 1. 指令集
+	 * setType = 2. 选择图片
+	 * setType = 3. 裁剪图片
+	 * setType = 4. 上传图片
+	*/
+	try{
+		alert(decodeURIComponent(res));
+		res = JSON.parse(decodeURIComponent(res));
+		// window.toast(res.result, true);
+	}catch(e){
+		window.toast(e, false);
+	}
+}
+
+ window.do_command_array5 = function(){
+	var command_array = [
+			{
+					"command_type": "choose_img",
+					"select_count": 5
+			},
+			{
+					"command_type": "upload_img",
+					"upload_type": 0,    
+					"localPath_list": [] 
+			}
+	];
+	try{
+		window.ToutiaoJSBridge.call('do_command_array',{ command_array },function (res){
+			window.toast(JSON.stringify(res), true);
+		});
+	}catch(e){
+		alert(e);
+	}
+
+
+ }
+
+ window.linkToUploadImage = function(){
+	// var url = "http://m.zjurl.cn/take_pics.html?motor_id=20000960025323&user_id=79546632971&device_id=null&series_name=%E5%A5%A5%E8%BF%AAA4L&car_name=2018%E6%AC%BE%2030%E5%91%A8%E5%B9%B4%E5%B9%B4%E5%9E%8B%2045%20TFSI%20quattro%20%E4%B8%AA%E6%80%A7%E8%BF%90%E5%8A%A8%E7%89%88";
+	var sslocal = `snssdk36://main_feed`;
+  location.href = sslocal;
+
+ }
+ </script>
+</html>

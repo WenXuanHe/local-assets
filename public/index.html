@@ -6,5 +6,18 @@
 </head>
 <body>
     hahaha
+    <a onclick="carDisplay()">跳转车展</a>
+    
+      <script>
+        window.carDisplay = function(){
+          // var url = 'http://hotsoon.snssdk.com/magic/runtime/?user_id=6833294652&debug=true&id=926&card_id=33&appType=dcd';
+          // var url = 'snssdk36://detail?item_id=6542812291333619975&groupid=6542812291333619975&media_id=0&group_flags=0&flags=1&aggr_type=1&article_type=0&from_gid=0&showcomment=0';
+          var url = 'snssdk36://detail?item_id=6545988353756496387&groupid=6545988353756496387&media_id=1589568918376455&group_flags=0&flags=0&aggr_type=1&article_type=0&from_gid=0&showcomment=0';
+          var sslocal = `snssdk36://webview?url=${url}`;
+          location.href = url;
+        }
+
+        
+      </script>
 </body>
 </html>
